@@ -37,6 +37,7 @@ const footer = () => {
       viewBox="0 0 29.667 31.69"
       className="Footerlogo-svg"
     >
+        
       <path
         id="Path_6"
         data-name="Path 6"
