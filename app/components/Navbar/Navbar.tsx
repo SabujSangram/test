@@ -41,16 +41,17 @@ const Navbar = () => {
                             {/* LOGO */}
 
                             <div className="flex flex-shrink-0 items-center">
-                                <img
-                                    className="block h-30px w-30px lg:hidden"
-                                    src={'/assets/logo/Logo.svg'}
-                                    alt="Courses-Logo"
-                                />
-                                <img
-                                    className="hidden h-48px w-48px lg:block"
-                                    src={'/assets/logo/Logo.svg'}
-                                    alt="Courses-Logo"
-                                />
+                                
+                            <button className="logo block h-30px w-30px lg:hidden" data-text="Awesome">
+    <span className="actual-text">&nbsp;U&nbsp;</span>
+    <span aria-hidden="true" className="hover-text">&nbsp;U&nbsp;</span>
+</button>
+
+<button className="logo hidden h-48px w-48px lg:block" data-text="Awesome">
+    <span className="actual-text">&nbsp;U&nbsp;</span>
+    <span aria-hidden="true" className="hover-text">&nbsp;U&nbsp;</span>
+</button>
+                               
                             </div>
 
                             {/* LINKS */}
@@ -70,14 +71,14 @@ const Navbar = () => {
                                             {item.name}
                                         </Link>
                                     ))}
-                                    <Contactus />
+                                    {/* <Contactus /> */}
                                 </div>
                             </div>
                         </div>
 
                         {/* SIGNIN DIALOG */}
 
-                        <Signdialog />
+                        {/* <Signdialog /> */}
 
 
                         {/* REGISTER DIALOG */}

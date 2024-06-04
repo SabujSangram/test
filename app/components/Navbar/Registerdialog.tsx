@@ -1,10 +1,34 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
-import { LockClosedIcon } from '@heroicons/react/20/solid'
 
 
-const Register = () => {
+const Contactusform = () => {
     let [isOpen, setIsOpen] = useState(false)
+
+    const [inputValues, setInputValues] = useState({
+        input1: '',
+        input2: '',
+        input3: ''
+    });
+
+    const handleChange = (e: { target: { name: string; value: string; }; }) => {
+        const { name, value } = e.target;
+        setInputValues(prevState => ({ ...prevState, [name]: value }));
+    }
+
+    const handleClick = () => {
+        // alert(`Name: ${inputValues.input1}, Email-address: ${inputValues.input2}, Message: ${inputValues.input3}`);
+        setIsOpen(false)
+    }
+
+    // FORM SUBMIT
+    const handleSubmit = (event: { preventDefault: () => void; }) => {
+        event.preventDefault();
+        // handle form submission
+    };
+
+    const isDisabled = Object.values(inputValues).some((value) => value === '');
+
 
     const closeModal = () => {
         setIsOpen(false)
@@ -16,16 +40,21 @@ const Register = () => {
 
     return (
         <>
-            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto  sm:pr-0">
+            <div className=" inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto md:ml-6 sm:pr-0">
+            <div className='md:hidden'>
+                    <button type="button" className='py-4 px-4 bg-black text-white text-15px font-medium' onClick={openModal}>
+                        Contact Us
+                    </button>
+                </div>
                 <div className='hidden md:block'>
-                    <button className="bg-purple hover:bg-purple hover:text-white text-white text-15px font-medium ml-8 py-4 px-5 rounded" onClick={openModal}>
-                        Register
+                    <button type="button" className='py-4 px-4 bg-black text-white text-15px font-medium space-links' onClick={openModal}>
+                        Contact Us
                     </button>
                 </div>
             </div>
 
             <Transition appear show={isOpen} as={Fragment}>
-                <Dialog as="div" className="relative z-10" onClose={closeModal}>
+                <Dialog as="div" className="relative z-50" onClose={closeModal}>
                     <Transition.Child
                         as={Fragment}
                         enter="ease-out duration-300"
@@ -51,91 +80,69 @@ const Register = () => {
                             >
                                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
 
-                                    <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-                                        <div className="w-full max-w-md space-y-8">
+                                    <div className="py-8 lg:py-8 px-4 mx-auto max-w-screen-md">
+                                        
+                                        <button className="logo mx-auto h-12 w-auto" data-text="Awesome">
+    <span className="actual-text">&nbsp;U&nbsp;</span>
+    <span aria-hidden="true" className="hover-text">&nbsp;U&nbsp;</span>
+</button>
+                                        <p className="mb-8 lg:mb-16 mt-8 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Contact us now? Want to send us a feedback?</p>
+                                        <form action="#" className="space-y-8" onSubmit={handleSubmit}>
                                             <div>
-                                                <img
-                                                    className="mx-auto h-12 w-auto"
-                                                    src="/assets/logo/Logo.svg"
-                                                    alt="Your Company"
+                                                <label htmlFor="text" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your Name</label>
+                                                <input
+                                                    id="text"
+
+                                                    name="input1"
+                                                    value={inputValues.input1}
+                                                    onChange={handleChange}
+
+                                                    type="text"
+                                                    autoComplete="current-password"
+                                                    required
+                                                    className="relative block w-full appearance-none  rounded-md border border-grey500 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                                    placeholder="Name..."
                                                 />
-                                                <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-                                                    Register your account
-                                                </h2>
                                             </div>
-                                            <form className="mt-8 space-y-6" action="#" method="POST">
-                                                <input type="hidden" name="remember" defaultValue="true" />
-                                                <div className="-space-y-px rounded-md shadow-sm">
-                                                    <div>
-                                                        <label htmlFor="email-address" className="sr-only">
-                                                            Email address
-                                                        </label>
-                                                        <input
-                                                            id="email-address"
-                                                            name="email"
-                                                            type="email"
-                                                            autoComplete="email"
-                                                            required
-                                                            className="relative block w-full appearance-none rounded-none rounded-t-md border border-grey500 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                                                            placeholder="Email address"
-                                                        />
-                                                    </div>
-                                                    <div>
-                                                        <label htmlFor="password" className="sr-only">
-                                                            Password
-                                                        </label>
-                                                        <input
-                                                            id="password"
-                                                            name="password"
-                                                            type="password"
-                                                            autoComplete="current-password"
-                                                            required
-                                                            className="relative block w-full appearance-none rounded-none rounded-b-md border border-grey500 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                                                            placeholder="Password"
-                                                        />
-                                                    </div>
-                                                </div>
+                                            <div>
+                                                <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
+                                                <input
+                                                    id="email"
+                                                    name="input2"
+                                                    value={inputValues.input2}
+                                                    onChange={handleChange}
 
-                                                <div className="flex items-center justify-between">
-                                                    <div className="flex items-center">
-                                                        <input
-                                                            id="remember-me"
-                                                            name="remember-me"
-                                                            type="checkbox"
-                                                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                                                        />
-                                                        <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                                                            Remember me
-                                                        </label>
-                                                    </div>
+                                                    type="email"
+                                                    autoComplete="current-password"
+                                                    required
+                                                    className="relative block w-full appearance-none  rounded-md border border-grey500 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                                    placeholder="xyz@email.com"
+                                                />
+                                            </div>
+                                            <div className="sm:col-span-2">
+                                                <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your message</label>
+                                                <textarea
+                                                    id="message"
+                                                    name="input3"
+                                                    value={inputValues.input3}
+                                                    onChange={handleChange}
+                                                    className="relative block w-full appearance-none  rounded-md border border-grey500 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Leave a comment..."></textarea>
+                                            </div>
+                                            <button type="submit"
+                                                onClick={handleClick}
+                                                disabled={isDisabled}
+                                                className="py-3 px-5 text-sm disabled:opacity-50 font-medium w-full text-center text-white rounded-lg bg-purple  hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Send message</button>
 
-                                                </div>
+                                        </form>
 
-                                                <div>
-                                                    <button
-                                                        type="submit"
-                                                        className="group relative flex w-full justify-center rounded-md border border-transparent bg-purple py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                                                    >
-                                                        <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                                                            <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" />
-                                                        </span>
-                                                        Register Now
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
                                     </div>
 
-
-                                    <div className="mt-4 flex justify-end">
-                                        <button
-                                            type="button"
-                                            className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 "
+                                    {<div className='flex justify-end'>
+                                        <button type="button"
                                             onClick={closeModal}
-                                        >
-                                            Got it, thanks!
-                                        </button>
-                                    </div>
+                                            className="py-3 px-5 mt-2 text-sm font-medium w-50 text-center text-white rounded-lg bg-red hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Close</button>
+                                    </div>}
+
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>
@@ -146,4 +153,4 @@ const Register = () => {
     )
 }
 
-export default Register;
+export default Contactusform;

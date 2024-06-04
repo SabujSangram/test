@@ -14,32 +14,32 @@ interface DataType {
 
 const postData: DataType[] = [
     {
-        profession: 'UX/UI Designer',
+        profession: 'Student',
         name: 'Andrew Williams',
         imgSrc: '/assets/students/user-1.jpg',
         starimg: '/assets/students/stars.png',
-        detail: "I have been a Junior Graphic Designer for more then 10 years. Some things are problem that I had and teach how to solve them. That's why this course is so great!"
+        detail: "Transformative course! AI integration offered new insights into audience targeting. Hands-on projects demystified AI tools for analytics, boosting campaign efficiency. A must for those seeking an edge in digital marketing"
     },
     {
-        profession: 'UX/UI Designer',
+        profession: 'Digital Marketing Manager',
         name: 'Cristian Doru Barin',
         imgSrc: '/assets/students/user-2.jpg',
         starimg: '/assets/students/stars.png',
-        detail: "I have been a Junior Graphic Designer for more then 10 years. Some things are problem that I had and teach how to solve them. That's why this course is so great!"
+        detail: "Incredible insight! AI-powered course illuminated ad targeting, content personalization, and consumer behavior analysis. Knowledgeable instructors simplified complex concepts. Now ready to implement AI strategies professionally!"
     },
     {
-        profession: 'UX/UI Designer',
+        profession: 'SEO Specialist',
         name: 'Tanzeel Ur Rehman',
         imgSrc: '/assets/students/user-3.jpg',
         starimg: '/assets/students/stars.png',
-        detail: "I have been a Junior Graphic Designer for more then 10 years. Some things are problem that I had and teach how to solve them. That's why this course is so great!"
+        detail: "Game-changer! Initially skeptical, but this AI-driven course reshaped my views. Instructors' expertise made complex concepts practical. Hands-on projects boosted campaign performance. Now ready to lead AI-driven strategies for top results in dynamic marketing."
     },
     {
-        profession: 'UX/UI Designer',
+        profession: 'Student',
         name: 'Andrew Williams',
         imgSrc: '/assets/students/user-1.jpg',
         starimg: '/assets/students/stars.png',
-        detail: "I have been a Junior Graphic Designer for more then 10 years. Some things are problem that I had and teach how to solve them. That's why this course is so great!"
+        detail: "Eye-opening AI-infused marketing course! Transformed our approach, making campaigns efficient with hands-on AI tools. Highly recommend for staying ahead in digital marketing!"
     },
 ]
 
@@ -84,14 +84,14 @@ export default class MultipleItems extends Component {
 
         return (
             <div id="testimonial-section" className='bg-bgpink'>
-                <div className="mx-auto max-w-2xl px-4 pt-16 pb-64 sm:pt-32 lg:max-w-7xl lg:px-8">
+                <div className="mx-auto max-w-2xl px-4 pt-16 pb-16 sm:pt-32 lg:max-w-7xl lg:px-8">
 
                     <div className='sm:flex justify-between items-center pb-6'>
                         <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-gray-900 my-4">What Our Happy <br /> Students Says</h2>
                         <div>
-                            <button className="bg-transparent hover:bg-purple text-purple font-semibold hover:text-white py-3 px-4 border border-lightgrey hover:border-transparent rounded">
+                            {/* <button className="bg-transparent hover:bg-purple text-purple font-semibold hover:text-white py-3 px-4 border border-lightgrey hover:border-transparent rounded">
                                 Give Your Review
-                            </button>
+                            </button> */}
                         </div>
                     </div>
 

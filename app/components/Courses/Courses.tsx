@@ -3,156 +3,87 @@ import * as React from "react";
 import { useState } from "react";
 import { GlobeAltIcon, DevicePhoneMobileIcon, CircleStackIcon, CloudIcon } from '@heroicons/react/24/outline';
 
-
 interface Name {
     course: string;
     imageSrc: string;
-    profession: string
-    price: string
-    category: 'mobiledevelopment' | 'webdevelopment' | 'datascience' | 'cloudcomputing';
+    profession: string;
+    price: string;
+    category: 'digitalmarketing';
 }
 
 const names: Name[] = [
     {
-        course: 'HTML, CSS, JS',
-        imageSrc: '/assets/courses/coursesOne.svg',
-        profession: 'HTML, CSS, Javascript Development',
+        course: 'AI for Digital Marketing',
+        imageSrc: '/assets/courses/img1.jpg',
+        profession: 'Harness the power of AI in your marketing strategies',
+        price: '50',
+        category: 'digitalmarketing'
+    },
+    {
+        course: 'Social Media Marketing with AI',
+        imageSrc: '/assets/courses/img4.jpg',
+        profession: 'Leverage AI to enhance your social media presence',
+        price: '45',
+        category: 'digitalmarketing'
+    },
+    {
+        course: 'SEO Optimization using AI',
+        imageSrc: '/assets/courses/img3.jpg',
+        profession: 'Boost your SEO efforts with AI tools',
+        price: '60',
+        category: 'digitalmarketing'
+    },
+    {
+        course: 'AI-Driven Email Marketing',
+        imageSrc: '/assets/courses/img10.jpg',
+        profession: 'Enhance email campaigns with AI',
         price: '40',
-        category: 'webdevelopment'
+        category: 'digitalmarketing'
     },
     {
-        course: 'Node.js',
-        imageSrc: '/assets/courses/coursesTwo.svg',
-        profession: 'Backend with Node.js and Express.js',
-        price: '21',
-        category: 'webdevelopment'
+        course: 'AI in Content Marketing',
+        imageSrc: '/assets/courses/img2.jpg',
+        profession: 'Create better content using AI',
+        price: '55',
+        category: 'digitalmarketing'
     },
     {
-        course: 'Database',
-        imageSrc: '/assets/courses/coursesThree.svg',
-        profession: 'Learn Mongodb with Mongoose',
-        price: '21',
-        category: 'webdevelopment'
+        course: 'AI Analytics for Marketing',
+        imageSrc: '/assets/courses/img6.jpg',
+        profession: 'Utilize AI for advanced marketing analytics',
+        price: '65',
+        category: 'digitalmarketing'
     },
     {
-        course: 'React.js',
-        imageSrc: '/assets/courses/coursesFour.svg',
-        profession: 'Learn React with Redux toolkit',
-        price: '99',
-        category: 'webdevelopment'
+        course: 'AI in Influencer Marketing',
+        imageSrc: '/assets/courses/img7.jpg',
+        profession: 'Find and manage influencers using AI',
+        price: '70',
+        category: 'digitalmarketing'
     },
     {
-        course: 'React Native',
-        imageSrc: '/assets/courses/coursesOne.svg',
-        profession: 'Learn React Native with Node.js',
-        price: '89',
-        category: 'mobiledevelopment'
-    },
-    {
-        course: 'Swift',
-        imageSrc: '/assets/courses/coursesThree.svg',
-        profession: 'Learn Swift from Scratch',
-        price: '89',
-        category: 'mobiledevelopment'
-    },
-    {
-        course: 'Flutter',
-        imageSrc: '/assets/courses/coursesFour.svg',
-        profession: 'Flutter App Development',
-        price: '69',
-        category: 'mobiledevelopment'
-    },
-    {
-        course: 'Onsen UI',
-        imageSrc: '/assets/courses/coursesTwo.svg',
-        profession: 'Learn Onsen Ui with HTML, CSS',
-        price: '69',
-        category: 'mobiledevelopment'
-    },
-    {
-        course: 'TensorFlow',
-        imageSrc: '/assets/courses/coursesTwo.svg',
-        profession: 'Learn TensorFlow with SQL',
-        price: '99',
-        category: 'datascience'
-    },
-    {
-        course: 'AWS',
-        imageSrc: '/assets/courses/coursesFour.svg',
-        profession: 'AWS Deep Learning AMI',
-        price: '99',
-        category: 'datascience'
-    },
-    {
-        course: 'Bokeh',
-        imageSrc: '/assets/courses/coursesOne.svg',
-        profession: 'Learn Bokeh with Python',
-        price: '99',
-        category: 'datascience'
-    },
-    {
-        course: 'Scikit',
-        imageSrc: '/assets/courses/coursesThree.svg',
-        profession: 'Scikit with Python Development',
-        price: '89',
-        category: 'datascience'
-    },
-    {
-        course: 'Laas',
-        imageSrc: '/assets/courses/coursesThree.svg',
-        profession: 'Infra-as-a-Service',
-        price: '21',
-        category: 'cloudcomputing'
-    },
-    {
-        course: 'Iaas',
-        imageSrc: '/assets/courses/coursesFour.svg',
-        profession: 'Info-as-a-Service',
-        price: '29',
-        category: 'cloudcomputing'
-    },
-    {
-        course: 'Paas',
-        imageSrc: '/assets/courses/coursesOne.svg',
-        profession: 'Platform-as-a-Service',
-        price: '99',
-        category: 'cloudcomputing'
-    },
-    {
-        course: 'Saas',
-        imageSrc: '/assets/courses/coursesTwo.svg',
-        profession: 'Software-as-a-Service',
-        price: '58',
-        category: 'cloudcomputing'
+        course: 'AI-Powered Marketing Automation',
+        imageSrc: '/assets/courses/img8.jpg',
+        profession: 'Automate your marketing tasks with AI',
+        price: '80',
+        category: 'digitalmarketing'
     }
 ];
 
 const NamesList = () => {
+    const [selectedButton, setSelectedButton] = useState<'digitalmarketing'>('digitalmarketing');
 
-    const [selectedButton, setSelectedButton] = useState<'mobiledevelopment' | 'webdevelopment' | 'datascience' | 'cloudcomputing' | 'all' | null>('webdevelopment');
-
-    const mobileDevelopment = names.filter((name) => name.category === 'mobiledevelopment');
-    const webDevelopment = names.filter((name) => name.category === 'webdevelopment');
-    const dataScience = names.filter((name) => name.category === 'datascience');
-    const cloudComputing = names.filter((name) => name.category === 'cloudcomputing');
+    const digitalMarketing = names.filter((name) => name.category === 'digitalmarketing');
 
     let selectedNames: Name[] = [];
 
-    if (selectedButton === 'mobiledevelopment') {
-        selectedNames = mobileDevelopment;
-    } else if (selectedButton === 'webdevelopment') {
-        selectedNames = webDevelopment;
-    } else if (selectedButton === 'datascience') {
-        selectedNames = dataScience;
-    } else if (selectedButton === 'cloudcomputing') {
-        selectedNames = cloudComputing
+    if (selectedButton === 'digitalmarketing') {
+        selectedNames = digitalMarketing;
     }
 
-
     const nameElements = selectedNames.map((name, index) => (
-
         <div key={index}>
-            <div className=" text-lg sm:text-sm py-5 lg:py-0">
+            <div className="text-lg sm:text-sm py-5 lg:py-0">
                 <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
                     <img
                         src={name.imageSrc}
@@ -171,7 +102,6 @@ const NamesList = () => {
                 <p aria-hidden="true" className="mt-2 mb-5 text-2xl font-semibold ">
                     {name.profession}
                 </p>
-
                 <div className='flex justify-between border-solid border-2 border-grey500 rounded-md p-2'>
                     <p>12 Classes</p>
                     <div className='flex flex-row space-x-4'>
@@ -185,39 +115,28 @@ const NamesList = () => {
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     ));
 
-
     return (
         <div>
             <div id='courses-section' className="mx-auto max-w-2xl py-16 px-4 sm:py-26 sm:px-6 lg:max-w-7xl lg:px-8">
-
                 <div className='sm:flex justify-between items-center pb-12'>
                     <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-gray-900 my-4">Popular Courses</h2>
                     <div>
-                        <button className="bg-transparent hover:bg-purple text-purple font-medium hover:text-white py-3 px-4 border border-purple hover:border-transparent rounded">
+                        {/* <button className="bg-transparent hover:bg-purple text-purple font-medium hover:text-white py-3 px-4 border border-purple hover:border-transparent rounded">
                             Explore Classes
-                        </button>
+                        </button> */}
                     </div>
                 </div>
 
                 <div className='flex nowhitespace space-x-5 rounded-xl bg-white p-1 overflow-x-auto'>
-
                     {/* FOR DESKTOP VIEW */}
-                    <button onClick={() => setSelectedButton('webdevelopment')} className={"bg-white " + (selectedButton === 'webdevelopment' ? 'text-black border-b-2 border-orange' : 'text-lightgrey') + " pb-2 text-lg hidden sm:block"}>Web Development</button>
-                    <button onClick={() => setSelectedButton('mobiledevelopment')} className={"bg-white " + (selectedButton === 'mobiledevelopment' ? 'text-black border-b-2 border-orange' : 'text-lightgrey') + " pb-2 text-lg hidden sm:block"}>Mobile Development</button>
-                    <button onClick={() => setSelectedButton('datascience')} className={"bg-white " + (selectedButton === 'datascience' ? 'text-black border-b-2 border-orange' : 'text-lightgrey') + " pb-2 text-lg hidden sm:block"}>Data Science</button>
-                    <button onClick={() => setSelectedButton('cloudcomputing')} className={"bg-white " + (selectedButton === 'cloudcomputing' ? 'text-black border-b-2 border-orange' : 'text-lightgrey') + " pb-2 text-lg hidden sm:block"}>Cloud Computing</button>
+                    <button onClick={() => setSelectedButton('digitalmarketing')} className={"bg-white " + (selectedButton === 'digitalmarketing' ? 'text-black border-b-2 border-orange' : 'text-lightgrey') + " pb-2 text-lg hidden sm:block"}>Digital Marketing</button>
 
                     {/* FOR MOBILE VIEW */}
-                    <GlobeAltIcon onClick={() => setSelectedButton('webdevelopment')} width={70} height={70} className={"bg-white " + (selectedButton === 'webdevelopment' ? 'border-b-2 border-orange fill-orange' : '') + " pb-2 block sm:hidden"} />
-                    <DevicePhoneMobileIcon onClick={() => setSelectedButton('mobiledevelopment')} width={70} height={70} className={"bg-white " + (selectedButton === 'mobiledevelopment' ? 'border-b-2 border-orange fill-orange' : '') + " pb-2 block sm:hidden"} />
-                    <CircleStackIcon onClick={() => setSelectedButton('datascience')} width={70} height={70} className={"bg-white " + (selectedButton === 'datascience' ? 'border-b-2 border-orange fill-orange' : '') + " pb-2 block sm:hidden"} />
-                    <CloudIcon onClick={() => setSelectedButton('cloudcomputing')} width={70} height={70} className={"bg-white " + (selectedButton === 'cloudcomputing' ? 'border-b-2 border-orange fill-orange' : '') + " pb-2 block sm:hidden"} />
-
+                    <GlobeAltIcon onClick={() => setSelectedButton('digitalmarketing')} width={70} height={70} className={"bg-white " + (selectedButton === 'digitalmarketing' ? 'border-b-2 border-orange fill-orange' : '') + " pb-2 block sm:hidden"} />
                 </div>
 
                 <div>
@@ -233,14 +152,9 @@ const NamesList = () => {
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     );
 }
 
 export default NamesList;
-
-
-
-
